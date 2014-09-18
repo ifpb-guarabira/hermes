@@ -1,0 +1,74 @@
+\documentclass[a5paper, 12pt]{letter}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{green}{RGB}{97,184,73}
+
+\usepackage[margin=1cm, portrait]{geometry}
+
+\usepackage{txfonts}
+\usepackage{helvet}
+\pagestyle{empty}
+
+\usepackage{setspace}
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{0.7cm}
+
+\usepackage{pgfpages}
+  \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm, landscape]
+
+\usepackage{atbegshi}
+  \AtBeginShipout{
+    \pgfpagesshipoutlogicalpage{1}\copy\AtBeginShipoutBox
+    \pgfpagesshipoutlogicalpage{2}\box\AtBeginShipoutBox
+    \pgfshipoutphysicalpage
+  }
+
+\begin{document}
+\hspace{.2cm}
+\begin{minipage}{.19\textwidth}
+    \includegraphics[width=.99\textwidth]{images/if}
+\end{minipage}
+\begin{minipage}[t]{\textwidth}
+        \vspace{.001cm}
+        {\bf
+            {\fontfamily{phv}\selectfont
+                INSTITUTO FEDERAL DE\\
+                EDUCAÇÃO, CIÊNCIA E TECNOLOGIA\\
+                {\color{green}
+                    PARAÍBA\\
+                    Campus Cajazeiras
+                }
+            }
+        }
+\end{minipage}
+{\bf
+{\fontfamily{phv}\selectfont
+    \begin{center}
+        {\fontfamily{phv}\selectfont
+            COORD. DO CURSO TÉCNICO INTEGRADO EM INFORMÁTICA
+        }
+    \end{center}
+}
+}
+
+\noindent COMUNICADO - @@@.
+
+\noindent Assunto: Justificativa de falta.\\
+Interesado: {\bf @@@ }
+
+\noindent Caros Professores,
+
+\onehalfspacing A Coordenação do Curso Técnico em Informática informa que o(a) aluno(a) {\bf @@@ (@@@º INTIN) } apresentou atestado médico justificando as faltas de {\bf @@@ }. Em virtude deste fato, caso o discente não tenha comparecido a alguma atividade de avaliação neste período, será dado o direito da realização de uma avaliação de reposição.
+
+\noindent Atenciosamente,
+
+\begin{flushright}
+\indent {\bf Moisés Guimarães de Medeiros }\\
+\indent Coord. do Curso Técnico\\
+\indent Integrado em Informática\\
+\end{flushright}
+
+\end{document}
