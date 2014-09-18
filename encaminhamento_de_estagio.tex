@@ -3,29 +3,46 @@
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{color}
+\definecolor{green}{RGB}{97,184,73}
 
 \usepackage{geometry}
 \geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
 
 \usepackage{txfonts}
+\usepackage{helvet}
 \pagestyle{empty}
 
-\usepackage{setspace} 
+\usepackage{setspace}
 \setlength{\parindent}{1cm}
 \setlength{\parskip}{0.7cm}
 
 \begin{document}
-
+\hspace{1.4cm}
+\begin{minipage}{.19\textwidth}
+    \includegraphics[width=.99\textwidth]{images/if}
+\end{minipage}
+\begin{minipage}[t]{\textwidth}
+        \vspace{.001cm}
+        {\bf
+            {\fontfamily{phv}\selectfont
+                INSTITUTO FEDERAL DE\\
+                EDUCAÇÃO, CIÊNCIA E TECNOLOGIA\\
+                {\color{green}
+                    PARAÍBA\\
+                    Campus Cajazeiras
+                }
+            }
+        }
+\end{minipage}
 {\bf
-
-\begin{center}
-\includegraphics{images/logo}\\
-INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DA PARAÍBA\\
-DIRETORIA DE DESENVOLVIMENTO DO ENSINO\\
-DEPARTAMENTO DE EDUCAÇÃO PROFISSIONAL\\
-COORDENAÇÃO DO CURSO TÉCNICO EM INFORMÁTICA
-\end{center}
-\vspace{0.5cm}
+{\fontfamily{phv}\selectfont
+    \begin{center}
+        {\fontfamily{phv}\selectfont
+            COORDENAÇÃO DO CURSO TÉCNICO INTEGRADO EM INFORMÁTICA
+        }
+    \end{center}
+}
 
 \begin{flushright}
 Cajazeiras, @@@.
@@ -36,36 +53,36 @@ Assunto: Encaminhamento de ficha de Estágio e emissão de Diploma
 
 \noindent Senhor Coordenador,
 
-\onehalfspacing Verificando a ausência de pendências no Histórico Escolar do(a) aluno(a)\linebreak
-@@@, matrícula @@@, o cumprimento da carga horária necessária para conclusão do curso e a aprovação da versão final do Relatório Final de Estágio  em @@@, solicitamos autorização para expedição do Diploma de Técnico(a) em nome do(a) referido(a) aluno(a).
-\vspace{0.5cm}
+\onehalfspacing Verificados a ausência de pendências no Histórico Escolar do(a) aluno(a)\linebreak
+@@@, matrícula @@@; o cumprimento da carga horária necessária para conclusão do curso; a aprovação do Relatório Final de Estágio  em @@@. Solicitamos, pois, a autorização para expedição do Diploma de Técnico(a) em nome do(a) referido(a) aluno(a).
 
 Atenciosamente,
 
 \indent $\underline{\hspace{7cm}}$\\
 \indent Moisés Guimarães de Medeiros\\
-\indent Coordenador do Curso Técnico em Informática\\
+\indent Coordenador do Curso Técnico Integrado em Informática\\
 }
-\indent (assinatura e carimbo)
+\indent {\em(assinatura e carimbo)}
 
-\noindent\fbox{\parbox{\textwidth}{{\fontsize{11pt}{11pt}\selectfont
-\vspace{0.5cm}
-
-\hspace{0.9cm}Com base nas informações contidas no processo em questão e fundamentado no parecer do Coordenador do Curso, autorizamos a emissão do Diploma requerido.
-\vspace{0.7cm}
-
-\begin{flushright}
-Cajazeiras, @@@.
-\end{flushright}
-\vspace{0.5cm}
-
-\begin{center}
-$\underline{\hspace{7cm}}$\\
-Diretor Geral do Campus Cajazeiras\\
-(assinatura e carimbo)\\
-\end{center}
-\vspace{0.5cm}
-
-} } }
+\noindent\fbox
+{\parbox
+    {\textwidth}{
+        {\fontsize{11pt}{11pt}\selectfont
+            \vspace{0.5cm}
+            \hspace{0.9cm}Com base nas informações contidas no processo em questão e fundamentado no parecer do Coordenador do Curso, autorizamos a emissão do Diploma requerido.
+            \vspace{0.7cm}
+            \begin{flushright}
+            Cajazeiras, $\underline{\hspace{.5cm}}$ de $\underline{\hspace{2.5cm}}$ de $\underline{\hspace{1cm}}$.
+            \end{flushright}
+            \vspace{0.5cm}
+            \begin{center}
+            $\underline{\hspace{7cm}}$\\
+            Diretor Geral do Campus Cajazeiras\\
+            {\em(assinatura e carimbo)}\\
+            \end{center}
+            \vspace{0.5cm}
+        }
+    }
+}
 
 \end{document}

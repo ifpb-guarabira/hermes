@@ -1,3 +1,4 @@
+#!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from subprocess import call
@@ -9,8 +10,9 @@ now        = datetime.now()
 student    = raw_input('Aluno: ')
 enrollment = raw_input('Matricula: ')
 dd, mm, aa = raw_input('Data de Conclusão: ').split('/')
+today      = '%s de %s de %s' % (now.day, months[now.month], now.year)
 date       = '%s de %s de %s' % (dd, months[int(mm)], aa)
-result     = model % (date, student, enrollment, date, date)
+result     = model % (today, student, enrollment, date)
 file_name  = 'encaminhamento de estagio - %d.%02d.%02d - %s' % (now.year, now.month, now.day, student)
 tex = open(file_name + '.tex', 'w')
 tex.write(result)
