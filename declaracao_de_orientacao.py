@@ -18,7 +18,7 @@ result     = model % (today, mentor, social_no, siape_id, student, year)
 
 file_name  = document.replace('_', ' ')
 file_name += ' - %d.%02d.%02d - ' % (now.year, now.month, now.day)
-file_name += student
+file_name += mentor
 
 tex = open(file_name + '.tex', 'w')
 tex.write(result)
