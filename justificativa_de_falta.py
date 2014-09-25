@@ -5,7 +5,6 @@ from datetime import timedelta
 from hermes import Hermes
 from hermes import months
 
-template = Hermes('justificativa_de_falta')
 data = {}
 
 data['@ALUNO']   = raw_input('Aluno: ')
@@ -20,4 +19,5 @@ if days > 1:
 
     data['@PERIODO'] += ' à %02d/%02d/%04d' % (end.day, end.month, end.year)
 
-template.build(data, data['@ALUNO'])
+Hermes('justificativa_de_falta').build(data, data['@ALUNO'])
+Hermes('comunicado_justificativa_de_falta').build(data, data['@ALUNO'])

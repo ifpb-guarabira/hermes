@@ -1,4 +1,4 @@
-\documentclass[a5paper, 12pt]{letter}
+\documentclass[a4paper, 12pt]{letter}
 
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
@@ -6,7 +6,8 @@
 \usepackage{color}
 \definecolor{green}{RGB}{97,184,73}
 
-\usepackage[margin=1cm, portrait]{geometry}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
 
 \usepackage{txfonts}
 \usepackage{helvet}
@@ -16,18 +17,8 @@
 \setlength{\parindent}{1cm}
 \setlength{\parskip}{0.7cm}
 
-\usepackage{pgfpages}
-  \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm, landscape]
-
-\usepackage{atbegshi}
-  \AtBeginShipout{
-    \pgfpagesshipoutlogicalpage{1}\copy\AtBeginShipoutBox
-    \pgfpagesshipoutlogicalpage{2}\box\AtBeginShipoutBox
-    \pgfshipoutphysicalpage
-  }
-
 \begin{document}
-\hspace{.2cm}
+\hspace{1.4cm}
 \begin{minipage}{.19\textwidth}
     \includegraphics[width=.99\textwidth]{images/if}
 \end{minipage}
@@ -48,27 +39,29 @@
 {\fontfamily{phv}\selectfont
     \begin{center}
         {\fontfamily{phv}\selectfont
-            COORD. DO CURSO TÉCNICO INTEGRADO EM INFORMÁTICA
+            COORDENAÇÃO DO CURSO TÉCNICO INTEGRADO EM INFORMÁTICA
         }
     \end{center}
 }
-}
-
-\noindent COMUNICADO - @HOJE.
-
-\noindent Assunto: Justificativa de falta.\\
-Interesado: {\bf @ALUNO }
-
-\noindent Caros Professores,
-
-\onehalfspacing A Coordenação do Curso Técnico em Informática informa que o(a) aluno(a) {\bf @ALUNO (@ANOº INTIN) } apresentou atestado médico justificando as faltas de {\bf @PERIODO }. Em virtude deste fato, caso o discente não tenha comparecido a alguma atividade de avaliação neste período, será dado o direito da realização de uma avaliação de reposição.
-
-\noindent Atenciosamente,
 
 \begin{flushright}
-\indent {\bf Moisés Guimarães de Medeiros }\\
-\indent Coord. do Curso Técnico\\
-\indent Integrado em Informática\\
+Cajazeiras, @HOJE.
 \end{flushright}
+
+\noindent À Coordenação de Controle Acadêmico\\
+Assunto: Análise de Justificativa de Falta\\
+Interessado: @ALUNO
+
+\noindent Senhor Coordenador,
+
+\onehalfspacing Vide atestado médico em anexo do(a) aluno(a) @ALUNO, é dado o parecer favorável à justificativa das faltas de @PERIODO. Em virtude deste fato, caso o(a) discente não tenha comparecido a alguma atividade de avaliação neste período, será dado o direito da realização de uma avaliação de reposição, mediante comunicado realizado aos respectivos professores.
+
+Atenciosamente,
+
+\indent $\underline{\hspace{7cm}}$\\
+\indent Moisés Guimarães de Medeiros\\
+\indent Coordenador do Curso Técnico Integrado em Informática\\
+}
+\indent {\em(assinatura e carimbo)}
 
 \end{document}
