@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from datetime import timedelta
-from subprocess import call
+from hermes import Hermes
+from hermes import months
 
-months = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+data = {}
 
+<<<<<<< HEAD
 model      = open('tex/justificativa_de_falta.tex', 'r').read().replace('@@@', '%s')
 now        = datetime.now()
 today      = '%s de %s de %s' % (now.day, months[now.month].upper(), now.year)
@@ -14,20 +16,19 @@ year       = raw_input('Turma: ')
 dd, mm, yy = raw_input('Data do atestado: ').split('/')
 days       = int(raw_input('Duração (dias): '))
 license    = '%s/%s/%s' % (dd, mm, yy)
+=======
+data['@ALUNO']   = raw_input('Aluno: ')
+data['@ANO']     = raw_input('Turma: ')
+dd, mm, yy       = raw_input('Data do atestado: ').split('/')
+days             = int(raw_input('Duração (dias): '))
+data['@PERIODO'] = '%s/%s/%s' % (dd, mm, yy)
+>>>>>>> 20bc99db544afab2ef68ae452918f499e5056b4f
 
 if days > 1:
-    end      = datetime(int(yy), int(mm), int(dd))
-    end     += timedelta(days=days - 1)
-    license += ' à %02d/%02d/%04d' % (end.day, end.month, end.year)
+    end  = datetime(int(yy), int(mm), int(dd))
+    end += timedelta(days=days - 1)
 
-result     = model % (today, student, student, year, license)
-file_name  = 'justificativa de falta - %d.%02d.%02d - %s' % (now.year, now.month, now.day, student)
-tex = open(file_name + '.tex', 'w')
-tex.write(result)
-tex.close()
+    data['@PERIODO'] += ' à %02d/%02d/%04d' % (end.day, end.month, end.year)
 
-call(['pdflatex', file_name + '.tex'])
-call(['rm',       file_name + '.tex'])
-call(['rm',       file_name + '.aux'])
-call(['rm',       file_name + '.log'])
-call(['mv',       file_name + '.pdf', str(now.year) + '/' + file_name + '.pdf'])
+Hermes('justificativa_de_falta').build(data, data['@ALUNO'])
+Hermes('comunicado_justificativa_de_falta').build(data, data['@ALUNO'])

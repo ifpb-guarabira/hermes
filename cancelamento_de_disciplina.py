@@ -1,8 +1,9 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
-from datetime import datetime
-from subprocess import call
+from hermes import Hermes
+from hermes import months
 
+<<<<<<< HEAD
 def gen(aluno, matricula, disciplina):
 	months = ['', 'Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
@@ -27,3 +28,12 @@ def gen(aluno, matricula, disciplina):
 	return file_name + '.pdf'
 
 # gen('test', 'test', 'test')
+=======
+data = {}
+
+data['@ALUNO']      = raw_input('Aluno: ')
+data['@MATRICULA']  = raw_input('Matricula: ')
+data['@DISCIPLINA'] = raw_input('Disciplina: ')
+
+Hermes('cancelamento_de_disciplina').build(data, data['@ALUNO'])
+>>>>>>> 20bc99db544afab2ef68ae452918f499e5056b4f
