@@ -6,7 +6,7 @@ from subprocess import call
 
 months = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
-model      = open('justificativa_de_falta.tex', 'r').read().replace('@@@', '%s')
+model      = open('tex/justificativa_de_falta.tex', 'r').read().replace('@@@', '%s')
 now        = datetime.now()
 today      = '%s de %s de %s' % (now.day, months[now.month].upper(), now.year)
 student    = raw_input('Nome do aluno: ')
