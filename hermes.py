@@ -1,36 +1,34 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+import os
+from datetime import date
 from subprocess import call
+from util import date_format
 
-months = ['', \
-    'Janeiro',  'Fevereiro', 'Março',    'Abril',  \
-    'Maio',     'Junho',     'Julho',    'Agosto', \
-    'Setembro', 'Outubro',   'Novembro', 'Dezembro']
+# diretório para armazenamento dos templates.
+_template_dir = os.path.join(os.path.dirname(__file__), 'tex')
+# diretório para armazenamento dos documentos.
+_output_dir   = os.path.join(os.path.dirname(__file__), 'output')
 
-class Hermes:
-    def __init__(self, template):
-        now = datetime.now()
-        
-        self.template  = open('tex/%s.tex' % template, 'r').read()
-        self.today     = '%s de %s de %s' % (now.day, months[now.month], now.year)
-        self.output    = template + ' - %d.%02d.%02d - ' % (now.year, now.month, now.day)
+
+class Template:
+    def __init__(self, name):
+        self.title   = name
+        self.content = open(os.path.join(_template_dir, name + '.tex')).read()
+
+
+class Builder:
+    def __init__(self, template, data):
+        today = date.today()
+        data['@HOJE'] = date_format('dd de MM de aaaa', today)
+
+        self.prefix = os.path.join(_output_dir, 
+                            date_format(template.title + '_aaaa_mm_dd_', today))
+        self.result = reduce(lambda x, y : x.replace(y, data[y]),
+                                                         data, template.content)
     
-    
-    def build(self, data, sufix):
-        file_name = self.output + sufix
-        
-        result = self.template.replace('@HOJE', self.today)
-        
-        for key in data.keys():
-            result = result.replace(key, data[key])
+    def build(self, id):
+        file = self.prefix + id.replace(' ', '_')
+        open(file + '.tex', 'w').write(self.result)
 
-        tex = open(file_name + '.tex', 'w')
-        tex.write(result)
-        tex.close()
-
-        call(['pdflatex', file_name + '.tex'])
-        call(['rm',       file_name + '.tex'])
-        call(['rm',       file_name + '.aux'])
-        call(['rm',       file_name + '.log'])
-        call(['mv',       file_name + '.pdf', self.today[-4:] + '/' + file_name + '.pdf'])
-    
+        call(['pdflatex', '-output-directory', 'output', file + '.tex'])
+        call(['rm', file + '.tex', file + '.aux', file + '.log'])
