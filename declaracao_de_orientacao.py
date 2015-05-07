@@ -1,14 +1,19 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from hermes import Hermes
-from hermes import months
+import hermes
+import env
 
-data = {}
+template = hermes.Template('declaracao_de_orientacao')
 
-data['@ALUNO']      = raw_input('Aluno(a): ')
-data['@ANO']        = raw_input('Ano: ')
-data['@ORIENTADOR'] = raw_input('Orientador(a): ')
-data['@SIAPE']      = raw_input('Matricula SIAPE: ')
-data['@CPF']        = raw_input('CPF: ')
+def cli():
+    context = dict(env.context)
+    context['@ALUNO']      = raw_input('Aluno(a): ')
+    context['@ANO']        = raw_input('Ano: ')
+    context['@ORIENTADOR'] = raw_input('Orientador(a): ')
+    context['@SIAPE']      = raw_input('Matricula SIAPE: ')
+    context['@CPF']        = raw_input('CPF: ')
 
-Hermes('declaracao_de_orientacao').build(data, data['@ORIENTADOR'])
+    hermes.cli_builder(template, context, context['@ORIENTADOR'])
+
+if __name__ == '__main__':
+    cli()
