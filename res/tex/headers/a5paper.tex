@@ -1,0 +1,15 @@
+\documentclass[a5paper, 12pt]{letter}
+
+\input{res/tex/headers/common.tex}
+
+\usepackage[margin=1cm, portrait]{geometry}
+
+\usepackage{pgfpages}
+  \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm, landscape]
+
+\usepackage{atbegshi}
+  \AtBeginShipout{
+    \pgfpagesshipoutlogicalpage{1}\copy\AtBeginShipoutBox
+    \pgfpagesshipoutlogicalpage{2}\box\AtBeginShipoutBox
+    \pgfshipoutphysicalpage
+  }

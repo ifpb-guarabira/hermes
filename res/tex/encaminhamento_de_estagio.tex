@@ -1,52 +1,10 @@
-\documentclass[a4paper, 12pt]{letter}
-
-\usepackage[brazil]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{color}
-\definecolor{green}{RGB}{97,184,73}
-
-\usepackage{geometry}
-\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
-
-\usepackage{txfonts}
-\usepackage{helvet}
-\pagestyle{empty}
-
-\usepackage{setspace}
-\setlength{\parindent}{1cm}
-\setlength{\parskip}{0.7cm}
+\input{res/tex/headers/a4paper.tex}
 
 \begin{document}
 \hspace{1.4cm}
-\begin{minipage}{.19\textwidth}
-    \includegraphics[width=.99\textwidth]{res/images/logo}
-\end{minipage}
-\begin{minipage}[t]{\textwidth}
-        \vspace{.001cm}
-        {\bf
-            {\fontfamily{phv}\selectfont
-                INSTITUTO FEDERAL DE\\
-                EDUCAÇÃO, CIÊNCIA E TECNOLOGIA\\
-                {\color{green}
-                    \uppercase{@ESTADO}\\
-                    Campus @CIDADE
-                }
-            }
-        }
-\end{minipage}
+\input{res/tex/shared/institute.tex}
 {\bf
-{\fontfamily{phv}\selectfont
-    \begin{center}
-        {\fontfamily{phv}\selectfont
-            COORDENAÇÃO DO \uppercase{@CURSO}
-        }
-    \end{center}
-}
-
-\begin{flushright}
-@CIDADE, @HOJE.
-\end{flushright}
+\begin{flushright} @CIDADE, @HOJE. \end{flushright}
 
 \noindent À Coordenação de Controle Acadêmico\\
 Assunto: Encaminhamento de ficha de Estágio e emissão de Diploma
@@ -57,32 +15,26 @@ Assunto: Encaminhamento de ficha de Estágio e emissão de Diploma
 @ALUNO, matrícula @MATRICULA; o cumprimento da carga horária necessária para conclusão do curso; e a aprovação do Relatório Final de Estágio  em @CONCLUSÃO. Solicitamos, pois, a autorização para expedição do Diploma de Técnico(a) em nome do(a) referido(a) aluno(a).
 
 Atenciosamente,
-
-\indent $\underline{\hspace{7cm}}$\\
-\indent @USUÁRIO\\
-\indent Coordenador do @CURSO\\
 }
-\indent {\em(assinatura e carimbo)}
 
-\noindent\fbox
-{\parbox
-    {\textwidth}{
-        {\fontsize{11pt}{11pt}\selectfont
-            \vspace{0.5cm}
-            \hspace{0.9cm}Com base nas informações contidas no processo em questão e fundamentado no parecer do Coordenador do Curso, autorizamos a emissão do Diploma requerido.
-            \vspace{0.7cm}
-            \begin{flushright}
-            @CIDADE, $\underline{\hspace{.5cm}}$ de $\underline{\hspace{2.5cm}}$ de $\underline{\hspace{1cm}}$.
-            \end{flushright}
-            \vspace{0.5cm}
-            \begin{center}
-            $\underline{\hspace{7cm}}$\\
-            Diretor Geral do Campus @CIDADE\\
-            {\em(assinatura e carimbo)}\\
-            \end{center}
-            \vspace{0.5cm}
-        }
-    }
-}
+\input{res/tex/shared/signature.tex}
+
+\noindent\fbox{\parbox{\textwidth}{{\fontsize{11pt}{11pt}\selectfont
+    \vspace{0.5cm}
+    \hspace{0.9cm}Com base nas informações contidas no processo em questão e
+	              fundamentado no parecer do Coordenador do Curso, autorizamos
+				  a emissão do Diploma requerido.
+    \vspace{0.7cm}
+    \begin{flushright}
+    @CIDADE, $\underline{\hspace{.5cm}}$ de $\underline{\hspace{2.5cm}}$ de $\underline{\hspace{1cm}}$.
+    \end{flushright}
+    \vspace{0.5cm}
+    \begin{center}
+    $\underline{\hspace{7cm}}$\\
+    Diretor Geral do Campus @CIDADE\\
+    {\em(assinatura e carimbo)}\\
+    \end{center}
+    \vspace{0.5cm}
+}}}
 
 \end{document}
