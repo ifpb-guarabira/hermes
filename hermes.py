@@ -21,11 +21,11 @@ class Builder:
         today = date.today()
         data['@HOJE'] = date_format('dd de MM de aaaa', today)
 
-        self.prefix = os.path.join(_output_dir, 
+        self.prefix = os.path.join(_output_dir,
                             date_format(template.title + '_aaaa_mm_dd_', today))
         self.result = reduce(lambda x, y : x.replace(y, data[y]),
                                                          data, template.content)
-    
+
     def build(self, id):
         file = self.prefix + id.replace(' ', '_')
         open(file + '.tex', 'w').write(self.result)
