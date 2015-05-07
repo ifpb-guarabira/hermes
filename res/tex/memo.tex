@@ -1,68 +1,20 @@
-\documentclass[a4paper, 12pt]{letter}
-
-\usepackage[brazil]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{color}
-\definecolor{green}{RGB}{97,184,73}
-
-\usepackage{geometry}
-\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
-
-\usepackage{txfonts}
-\usepackage{helvet}
-\pagestyle{empty}
-
-\usepackage{setspace}
-\setlength{\parindent}{1cm}
-\setlength{\parskip}{0.7cm}
+\input{res/tex/headers/a4paper.tex}
 
 \begin{document}
 \hspace{1.4cm}
-\begin{minipage}{.19\textwidth}
-    \includegraphics[width=.99\textwidth]{res/images/logo}
-\end{minipage}
-\begin{minipage}[t]{\textwidth}
-        \vspace{.001cm}
-        {\bf
-            {\fontfamily{phv}\selectfont
-                INSTITUTO FEDERAL DE\\
-                EDUCAÇÃO, CIÊNCIA E TECNOLOGIA\\
-                {\color{green}
-                    PARAÍBA\\
-                    Campus Cajazeiras
-                }
-            }
-        }
-\end{minipage}
-{\bf
-{\fontfamily{phv}\selectfont
-    \begin{center}
-        {\fontfamily{phv}\selectfont
-            COORDENAÇÃO DO CURSO TÉCNICO INTEGRADO EM INFORMÁTICA
-        }
-    \end{center}
-}
+\input{res/tex/shared/institute.tex}
 
-\noindent MEMO @NUMERO/IFPB/CAMPUS CAJAZEIRAS/CTIN\\
+\noindent MEMO @NUMERO/@INSTITUTO/CAMPUS \uppercase{@CIDADE}/@SETOR
 
-
-\begin{flushright}
-Cajazeiras, @HOJE.
-\end{flushright}
-
+\input{res/tex/shared/location_and_date.tex}
 
 \noindent PARA:  @DESTINO \\
 \noindent ASSUNTO: @ASSUNTO
 
-\noindent @TEXTO \\
+\onehalfspacing @TEXTO
 
 \noindent Cordialmente,
 
-\indent $\underline{\hspace{7cm}}$\\
-\indent Ricardo de Sousa Job\\
-\indent Coordenador do Curso Técnico Integrado em Informática\\
-}
-\indent {\em(assinatura e carimbo)}
+\input{res/tex/shared/signature.tex}
 
 \end{document}
