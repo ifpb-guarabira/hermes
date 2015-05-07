@@ -2,33 +2,47 @@
 import os
 from datetime import date
 from subprocess import call
-from util import date_format
+
+# meses do ano em português.
+months = ['', 'Janeiro',  'Fevereiro', 'Março',    'Abril',
+              'Maio',     'Junho',     'Julho',    'Agosto',
+              'Setembro', 'Outubro',   'Novembro', 'Dezembro']
+
+def date_format(fmt, date):
+    fmt = fmt.replace('aaaa', '%04d' % date.year)
+    fmt = fmt.replace('aa',   '%02d' % date.year)
+    fmt = fmt.replace('MM',   months[date.month])
+    fmt = fmt.replace('mm',   '%02d' % date.month)
+    fmt = fmt.replace('dd',   '%02d' % date.day)
+
+    return fmt
 
 # diretório para armazenamento dos templates.
-_template_dir = os.path.join(os.path.dirname(__file__), 'tex')
-# diretório para armazenamento dos documentos.
-_output_dir   = os.path.join(os.path.dirname(__file__), 'output')
-
+_template_dir = os.path.join(os.path.dirname(__file__), 'res/tex')
 
 class Template:
     def __init__(self, name):
         self.title   = name
         self.content = open(os.path.join(_template_dir, name + '.tex')).read()
 
+    def render(self, ctx):
+        ctx['@HOJE'] = date_format('dd de MM de aaaa', date.today())
 
-class Builder:
-    def __init__(self, template, data):
-        today = date.today()
-        data['@HOJE'] = date_format('dd de MM de aaaa', today)
+        return reduce(lambda x, y : x.replace(y, ctx[y]), ctx, self.content)
 
-        self.prefix = os.path.join(_output_dir,
-                            date_format(template.title + '_aaaa_mm_dd_', today))
-        self.result = reduce(lambda x, y : x.replace(y, data[y]),
-                                                         data, template.content)
+# diretório para armazenamento dos documentos.
+_output_dir = os.path.join(os.path.dirname(__file__), 'output')
 
-    def build(self, id):
-        file = self.prefix + id.replace(' ', '_')
-        open(file + '.tex', 'w').write(self.result)
+if not os.path.exists(_output_dir):
+    os.makedirs(_output_dir)
 
-        call(['pdflatex', '-output-directory', 'output', file + '.tex'])
-        call(['rm', file + '.tex', file + '.aux', file + '.log'])
+def cli_builder(template, context, key):
+    base_name = os.path.join(_output_dir,
+                             template.title +
+                             date_format('_aaaa_mm_dd_', date.today()) +
+                             key.lower().replace(' ', '_'))
+
+    open(base_name + '.tex', 'w').write(template.render(context))
+
+    call(['pdflatex', '-output-directory', _output_dir, base_name + '.tex'])
+    call(['rm', base_name + '.tex', base_name + '.aux', base_name + '.log'])

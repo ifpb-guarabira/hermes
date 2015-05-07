@@ -1,19 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import hermes
-from util import months
-        
-def main():
-    data = {}
 
-    data['@ALUNO']     = raw_input('Aluno: ')
-    data['@MATRICULA'] = raw_input('Matricula: ')
-    dd, mm, yy         = raw_input('Data de Conclusão: ').split('/')
-    data['@CONCLUSÃO'] = '%s de %s de %s' % (dd, months[int(mm)], yy)
+template = hermes.Template('encaminhamento_de_estagio')
 
-    builder = hermes.Builder(hermes.Template('encaminhamento_de_estagio'), data)
+def cli():
+    context = {}
+    context['@ALUNO']     = raw_input('Aluno: ')
+    context['@MATRICULA'] = raw_input('Matricula: ')
+    dd, mm, yy            = raw_input('Data de Conclusão: ').split('/')
+    context['@CONCLUSÃO'] = '%s de %s de %s' % (dd, hermes.months[int(mm)], yy)
 
-    builder.build(data['@ALUNO'].lower())
-    
-if __name__ == "__main__":
-    main()
+    hermes.cli_builder(template, context, context['@ALUNO'])
+
+if __name__ == '__main__':
+    cli()
