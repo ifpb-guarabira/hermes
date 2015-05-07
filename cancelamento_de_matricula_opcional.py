@@ -3,7 +3,7 @@
 import hermes
 import env
 
-template = hermes.Template('cancelamento_de_disciplina')
+template = hermes.Template('cancelamento_de_matricula_opcional')
 
 def cli():
     context = dict(env.context)
