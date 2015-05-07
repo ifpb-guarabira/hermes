@@ -3,13 +3,17 @@
 import hermes
 import env
 
-template = hermes.Template('cancelamento_de_matricula_opcional')
+deferido = hermes.Template('canc_mat_disc_deferido')
+indeferido = hermes.Template('canc_mat_disc_indeferido')
 
 def cli():
     context = dict(env.context)
     context['@ALUNO']      = raw_input('Aluno: ')
     context['@MATRICULA']  = raw_input('Matricula: ')
     context['@DISCIPLINA'] = raw_input('Disciplina: ')
+    context['@PROCESSO']   = raw_input('Processo (caso indeferido): ')
+
+    template = indeferido if processo else deferido
 
     hermes.cli_builder(template, context, context['@ALUNO'])
 
