@@ -13,7 +13,7 @@ def cli():
     context['@DISCIPLINA'] = raw_input('Disciplina: ')
     context['@PROCESSO']   = raw_input('Processo (caso indeferido): ')
 
-    template = indeferido if processo else deferido
+    template = indeferido if context['@PROCESSO'] else deferido
 
     hermes.cli_builder(template, context, context['@ALUNO'])
 
