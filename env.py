@@ -3,8 +3,8 @@
 context = {
     '@INSTITUTO' : 'IFPB',
     '@ESTADO'    : 'Paraíba',
-    '@CIDADE'    : 'Cajazeiras',
-    '@USUÁRIO'   : 'Ricardo de Sousa Job',
-    '@CURSO'     : 'Curso Técnico Integrado em Informática',
-    '@SETOR'     : 'CTIN'
+    '@CIDADE'    : 'Guarabira',
+    '@USUÁRIO'   : 'Moisés Guimarães de Medeiros',
+    '@CURSO'     : 'Cursos Técnicos em Informática',
+    '@SETOR'     : 'COTINF'
 }

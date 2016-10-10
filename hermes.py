@@ -61,7 +61,8 @@ if not os.path.exists(_output_dir):
 def cli_builder(template, context, key):
     base_name = os.path.join(_output_dir,
                              template.title +
-                             date_format('_aaaa_mm_dd_', date.today()) +
+                             (context['@DIA'] if context.has_key('@DIA')
+                             else date_format('_aaaa_mm_dd_', date.today())) +
                              key.lower().replace(' ', '_'))
 
     open(base_name + '.tex', 'w').write(template.render(context))
