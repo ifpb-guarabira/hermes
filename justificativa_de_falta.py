@@ -10,18 +10,19 @@ parecer    = hermes.Template('justificativa_de_falta_parecer')
 
 def build(studdent, year, date, days):
     context = dict(env.context)
-    context['@ALUNO']     = studdent
-    context['@ANO']       = year
-    dd, mm, yy            = date.split('/') if '/' in date else \
-                            date.split('-') if '-' in date else \
-                            (date[0:2], date[2:4], date[4:])
-    days                  = int(days)
-    context['@PERIODO']   = '%s/%s/%s' % (dd, mm, yy)
-    context['@DIA']       = '_%s_%s_%s_' % (yy, mm, dd)
+    context['@ANO'] = year
+    context['@ALUNO'] = studdent
 
+    dd, mm, yy = date.split('/') if '/' in date else \
+                 date.split('-') if '-' in date else \
+                 (date[0:2], date[2:4], date[4:])
     if len(yy) < 4:
         yy = '20' + yy
 
+    context['@DIA'] = '_%s_%s_%s_' % (yy, mm, dd)
+    context['@PERIODO'] = '%s/%s/%s' % (dd, mm, yy)
+
+    days = int(days)
     if days > 1:
         end  = datetime(int(yy), int(mm), int(dd))
         end += timedelta(days=days - 1)
